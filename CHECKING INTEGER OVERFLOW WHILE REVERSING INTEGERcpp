@@ -1,0 +1,36 @@
+int Solution::reverse(int A) {
+    if(A>pow(2,31)-1 || A<-2147483648)
+        return 0;
+    if(A<0)
+    {
+        int x=abs(A);
+        long r=0;
+        while(x>0)
+        {
+            int y=x%10;
+            r+=y;
+            x/=10;
+            if(x!=0)
+                r*=10;
+        }
+        if(r>pow(2,31)-1 || r<-2147483648)
+            return 0;
+        return -(int)r;
+    }
+    else
+    {
+        int x=abs(A);
+        long r=0;
+        while(x>0)
+        {
+            int y=x%10;
+            r+=y;
+            x/=10;
+            if(x!=0)
+                r*=10;
+        }
+        if(r>pow(2,31)-1 || r<-2147483648)
+            return 0;
+        return int(r);
+    }
+}
