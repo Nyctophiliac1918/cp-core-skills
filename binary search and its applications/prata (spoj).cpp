@@ -1,3 +1,5 @@
+//https://www.spoj.com/problems/PRATA/
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
