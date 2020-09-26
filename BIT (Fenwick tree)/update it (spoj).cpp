@@ -1,5 +1,6 @@
 // We will update the values in Fenwick tree from l to r. First, by updating it from l to last element and then subtracting val from r+1 to last element. Then, give the answer to query.
-// https://www.spoj.com/problems/UPDATEIT/
+https://www.spoj.com/problems/UPDATEIT/
+// range update, point query
 
 #include <iostream>
 #include <vector>
