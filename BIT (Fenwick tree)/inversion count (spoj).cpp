@@ -1,4 +1,5 @@
 //https://www.spoj.com/problems/INVCNT/
+// This is also called point update, range query.
 
 #include <iostream>
 #include <vector>
