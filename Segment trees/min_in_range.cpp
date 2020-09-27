@@ -45,6 +45,25 @@ int query(int *tree, int s, int e, int qs, int qe, int idx)
 
 }
 
+void updateNode(int *tree, int s, int e, int i, int inc, int idx)
+{
+	if (i < s || i > e)
+		return;
+
+	if (s == e)
+	{
+		tree[idx] += inc;
+		return;
+	}
+
+	int mid = (s + e) / 2;
+	updateNode(tree, s, mid, i, inc, 2 * idx);
+	updateNode(tree, mid + 1, e, i, inc, 2 * idx + 1);
+	tree[idx] = min(tree[2 * idx], tree[2 * idx + 1]);
+	return;
+
+}
+
 int main()
 {
 
@@ -64,4 +83,14 @@ int main()
 		cin >> l >> r;
 		cout << query(tree, 0, n - 1, l, r, 1) << endl;
 	}
+
+	updateNode(tree, 0, n - 1, 3, 10, 1);
+
+	w(p)
+	{
+		int l, r;
+		cin >> l >> r;
+		cout << query(tree, 0, n - 1, l, r, 1) << endl;
+	}
+
 }
