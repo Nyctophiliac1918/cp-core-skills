@@ -64,6 +64,24 @@ void updateNode(int *tree, int s, int e, int i, int inc, int idx)   //O(logN)
 
 }
 
+void updateRange(int *tree, int s, int e, int l, int r, int inc, int idx)   //worst case O(N)
+{
+	if (r < s || l > e)
+		return;
+
+	if (s == e)
+	{
+		tree[idx] += inc;
+		return;
+	}
+
+	int mid = (s + e) / 2;
+	updateRange(tree, s, mid, l, r, inc, 2 * idx);
+	updateRange(tree, mid + 1, e, l, r, inc, 2 * idx + 1);
+	tree[idx] = min(tree[2 * idx], tree[2 * idx + 1]);
+	return;
+}
+
 int main()
 {
 
@@ -87,6 +105,15 @@ int main()
 	updateNode(tree, 0, n - 1, 3, 10, 1);
 
 	w(p)
+	{
+		int l, r;
+		cin >> l >> r;
+		cout << query(tree, 0, n - 1, l, r, 1) << endl;
+	}
+	
+	updateRange(tree, 0, n - 1, 3, 5, 10, 1);
+
+	w(t)
 	{
 		int l, r;
 		cin >> l >> r;
