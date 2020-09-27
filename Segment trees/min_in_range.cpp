@@ -12,7 +12,7 @@ using namespace std;
 #define w(x) int x; cin>>x; while(x--)
 #define FAST ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
-void buildTree(int *a, int s, int e, int *tree, int idx)
+void buildTree(int *a, int s, int e, int *tree, int idx)  //O(N)
 {
 	if (s == e)
 	{
@@ -27,7 +27,7 @@ void buildTree(int *a, int s, int e, int *tree, int idx)
 	return;
 }
 
-int query(int *tree, int s, int e, int qs, int qe, int idx)
+int query(int *tree, int s, int e, int qs, int qe, int idx)  //O(logN)
 {
 	//Complete overlap
 	if (s >= qs && e <= qe)
@@ -45,7 +45,7 @@ int query(int *tree, int s, int e, int qs, int qe, int idx)
 
 }
 
-void updateNode(int *tree, int s, int e, int i, int inc, int idx)
+void updateNode(int *tree, int s, int e, int i, int inc, int idx)   //O(logN)
 {
 	if (i < s || i > e)
 		return;
