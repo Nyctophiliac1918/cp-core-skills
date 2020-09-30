@@ -1,5 +1,5 @@
 // https://www.spoj.com/problems/BAISED/
-// O(logN) solution : We can sort the ranks that people desire and then traverse the array and add the diff of what he desired and what is available.
+// O(NlogN) solution : We can sort the ranks that people desire and then traverse the array and add the diff of what he desired and what is available.
 
 //O(N) solution
 // Here we are the storing the frquency of the ranks teams desire, and find the best that we can provide anyone by seeing which one is available closest to what someone desires.
