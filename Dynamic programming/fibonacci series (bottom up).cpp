@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <climits>
+#include <iomanip> //for setprecision()
+#include <cstring> //for memset()
+using namespace std;
+#define ll long long
+#define pb push_back
+#define rep(i,n) for(int i=0;i<n;i++)
+#define w(x) int x; cin>>x; while(x--)
+#define FAST ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+
+int fib(int n)
+{
+	int dp[101] = {};
+	dp[1] = 1;
+
+	for (int i = 2; i <= n; i++)
+		dp[i] = dp[i - 1] + dp[i - 2];
+
+	return dp[n];
+}
+
+int main()
+{
+	/*#ifndef ONLINE_JUDGE
+		freopen("input.txt", "r", stdin);
+		freopen("output.txt", "w", stdout);
+	#endif*/
+
+	int n = 5;
+
+	cout << fib(n);
+}
