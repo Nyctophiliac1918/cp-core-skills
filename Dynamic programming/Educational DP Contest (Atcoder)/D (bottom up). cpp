@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define pb push_back
+#define rep(i,n) for(int i=0;i<n;i++)
+#define w(x) int x; cin>>x; while(x--)
+#define FAST ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+
+struct item {
+	int wt;
+	int val;
+};
+
+ll solve(vector<item>a, int n, int w)
+{
+	ll dp[n + 1][w + 1] = {};
+
+	dp[1][a[1].wt] = a[1].val;
+
+	for (int i = 2; i <= n; i++)
+	{
+		for (int j = 0; j <= w; j++)
+		{
+			dp[i][j] = dp[i - 1][j];
+			if (a[i].wt > j)
+				continue;
+			dp[i][j] = max(dp[i][j], a[i].val + dp[i - 1][j - a[i].wt]);
+		}
+	}
+
+	// for (int i = 0; i <= n; i++)
+	// {
+	// 	for (int j = 0; j <= w; j++)
+	// 		cout << dp[i][j] << " ";
+	// 	cout << endl;
+	// }
+
+	return *max_element(dp[n], dp[n] + w + 1);
+}
+
+int main()
+{
+#ifndef ONLINE_JUDGE
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+#endif
+
+	FAST
+	int n, w;
+	cin >> n >> w;
+	std::vector<item> a(n + 1);
+	for (int i = 1; i <= n; i++)
+		cin >> a[i].wt >> a[i].val;
+
+	cout << solve(a, n, w);
+}
