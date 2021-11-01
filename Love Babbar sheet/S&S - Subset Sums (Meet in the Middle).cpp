@@ -121,10 +121,10 @@ bool canMake(int t, vector<int>& v, int p) {
 	return false;
 }
 
-void dist(int l, int r, vector<int>& v, vector<long>& a) {
+void dist(int l, int r, vector<int>& v, vector<long long>& a) {
 	int n = r - l + 1;
 	for (int i = 0; i < (1 << n); i++) {
-		long s = 0;
+		long long s = 0;
 		int j = l, x = i;
 		while (x) {
 			if (x & 1) s += v[j];
@@ -156,13 +156,13 @@ int main()
 	// 	n = n->next;a
 	// }
 
-	long n, a, b;
+	long long n, a, b;
 	cin >> n >> a >> b;
 
 	vector<int>s(n);
 	rep(i, n) cin >> s[i];
 
-	vector<long>x, y;
+	vector<long long>x, y;
 	dist(0, n / 2 - 1, s, x);
 	dist(n / 2, n - 1, s, y);
 
@@ -174,7 +174,7 @@ int main()
 
 	sort(y.begin(), y.end());
 
-	int cnt = 0;
+	long long cnt = 0;
 
 	for (int i = 0; i < x.size(); i++) {
 		cnt += upper_bound(y.begin(), y.end(), b - x[i]) - lower_bound(y.begin(), y.end(), a - x[i]);
